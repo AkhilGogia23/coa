@@ -1,0 +1,20 @@
+{
+  "lotNumber": "L2025-00123",
+  "productName": "Example Product",
+  "sku": "SKU-123",
+  "status": "Released",
+  "manufactureDate": "2025-01-15",
+  "expiryDate": "2027-01-15",
+  "results": {
+    "ingredients": [
+      {
+        "name": "Vitamin C",
+        "lotNumber": "ING-001",
+        "coaPdfUrl": "https://example.com/vitc.pdf",
+        "passed": true
+      }
+    ],
+    "blend": [],
+    "finishedProduct": []
+  }
+}

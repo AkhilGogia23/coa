@@ -1,6 +1,5 @@
 <div class="app-root">
   <div class="card shell">
-    <!-- Top bar / branding -->
     <header class="header">
       <div class="logo-circle">C</div>
       <div class="header-text">
@@ -9,7 +8,6 @@
       </div>
     </header>
 
-    <!-- Search form -->
     <section class="search-section">
       <label for="lot" class="field-label">Lot number</label>
       <div class="search-row">
@@ -25,7 +23,6 @@
       <p class="hint">Tip: Use the test lot numbers your client provided.</p>
     </section>
 
-    <!-- Status (loading / error / empty state) -->
     <section class="status-section">
       <div *ngIf="loading()" class="loader-row">
         <div class="spinner"></div>
@@ -38,44 +35,42 @@
 
       <div *ngIf="!loading() && !error() && !result()">
         <p class="empty-text">
-          Enter a lot number above and hit <strong>Search</strong> to see results.
+          Enter a lot number above and hit <strong>Search</strong> to see
+          results.
         </p>
       </div>
     </section>
 
-    <!-- Results -->
     <ng-container *ngIf="result() as r">
-      <!-- Product summary -->
       <section class="card summary-card">
         <div class="summary-header">
           <div>
-            <h2>{{ r.productName || 'Product details' }}</h2>
+            <h2>{{ r.productName || "Product details" }}</h2>
             <p class="lot-line">
               Lot <span class="lot-pill">{{ r.lotNumber }}</span>
             </p>
           </div>
           <div class="status-pill" [class.status-ok]="r.status === 'Released'">
-            {{ r.status || 'Unknown status' }}
+            {{ r.status || "Unknown status" }}
           </div>
         </div>
 
         <div class="summary-grid">
           <div>
             <span class="label">SKU</span>
-            <span class="value">{{ r.sku || '—' }}</span>
+            <span class="value">{{ r.sku || "—" }}</span>
           </div>
           <div>
             <span class="label">Manufactured</span>
-            <span class="value">{{ r.manufactureDate || '—' }}</span>
+            <span class="value">{{ r.manufactureDate || "—" }}</span>
           </div>
           <div>
             <span class="label">Expiry</span>
-            <span class="value">{{ r.expiryDate || '—' }}</span>
+            <span class="value">{{ r.expiryDate || "—" }}</span>
           </div>
         </div>
       </section>
 
-      <!-- Section: Ingredients -->
       <section class="results-section">
         <h3>Ingredients</h3>
         <p class="section-subtitle">Raw materials used in the batch.</p>
@@ -84,17 +79,14 @@
           No ingredient COAs found for this lot.
         </div>
 
-        <div
-          class="coa-card"
-          *ngFor="let item of r.results.ingredients"
-        >
+        <div class="coa-card" *ngFor="let item of r.results.ingredients">
           <div class="coa-main">
             <div>
               <h4>{{ item.name }}</h4>
               <p class="coa-lot">Lot: {{ item.lotNumber }}</p>
             </div>
             <span class="pass-pill" [class.pass-pill-fail]="!item.passed">
-              {{ item.passed ? 'Pass' : 'Fail' }}
+              {{ item.passed ? "Pass" : "Fail" }}
             </span>
           </div>
           <a
@@ -108,7 +100,6 @@
         </div>
       </section>
 
-      <!-- Section: Blend -->
       <section class="results-section">
         <h3>Blend</h3>
         <p class="section-subtitle">Intermediate blend test results.</p>
@@ -117,31 +108,22 @@
           No blend COAs found for this lot.
         </div>
 
-        <div
-          class="coa-card"
-          *ngFor="let item of r.results.blend"
-        >
+        <div class="coa-card" *ngFor="let item of r.results.blend">
           <div class="coa-main">
             <div>
               <h4>{{ item.name }}</h4>
               <p class="coa-lot">Lot: {{ item.lotNumber }}</p>
             </div>
             <span class="pass-pill" [class.pass-pill-fail]="!item.passed">
-              {{ item.passed ? 'Pass' : 'Fail' }}
+              {{ item.passed ? "Pass" : "Fail" }}
             </span>
           </div>
-          <a
-            class="pdf-link"
-            [href]="item.coaPdfUrl"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View COA PDF
-          </a>
+          <button type="button" class="pdf-link" (click)="downloadCoa(item)">
+            Download COA PDF
+          </button>
         </div>
       </section>
 
-      <!-- Section: Finished product -->
       <section class="results-section">
         <h3>Finished Product</h3>
         <p class="section-subtitle">Final product COAs for the lot.</p>
@@ -150,32 +132,23 @@
           No finished product COAs found for this lot.
         </div>
 
-        <div
-          class="coa-card"
-          *ngFor="let item of r.results.finishedProduct"
-        >
+        <div class="coa-card" *ngFor="let item of r.results.finishedProduct">
           <div class="coa-main">
             <div>
               <h4>{{ item.name }}</h4>
               <p class="coa-lot">Lot: {{ item.lotNumber }}</p>
             </div>
             <span class="pass-pill" [class.pass-pill-fail]="!item.passed">
-              {{ item.passed ? 'Pass' : 'Fail' }}
+              {{ item.passed ? "Pass" : "Fail" }}
             </span>
           </div>
-          <a
-            class="pdf-link"
-            [href]="item.coaPdfUrl"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View COA PDF
-          </a>
+          <button type="button" class="pdf-link" (click)="downloadCoa(item)">
+            Download COA PDF
+          </button>
         </div>
       </section>
     </ng-container>
 
-    <!-- Small footer line -->
     <footer class="footer">
       Read-only COA lookup – powered by MasterControl &amp; Snowflake (coming).
     </footer>

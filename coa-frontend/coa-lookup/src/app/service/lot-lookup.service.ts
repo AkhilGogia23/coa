@@ -26,9 +26,11 @@ export interface LotResponse {
 @Injectable({ providedIn: 'root' })
 export class LotLookupService {
   private http = inject(HttpClient);
-  private baseUrl = 'http://localhost:8080/api/lots'; // later: env variable
+  private baseUrl = 'http://localhost:8080/api/lots';
 
   getLot(lotNumber: string): Observable<LotResponse> {
-    return this.http.get<LotResponse>(`${this.baseUrl}/${encodeURIComponent(lotNumber)}`);
+    return this.http.get<LotResponse>(
+      `${this.baseUrl}/${encodeURIComponent(lotNumber)}`
+    );
   }
 }

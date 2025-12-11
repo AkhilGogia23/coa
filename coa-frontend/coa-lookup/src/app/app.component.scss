@@ -10,7 +10,8 @@ $soft-white: #c5c6c7;
   min-height: 100vh;
   background: radial-gradient(circle at top, #1f2833 0, #0b0c10 55%);
   color: $soft-white;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
 }
 
 .app-root {
@@ -40,7 +41,6 @@ $soft-white: #c5c6c7;
   }
 }
 
-/* HEADER */
 .header {
   display: flex;
   gap: 0.9rem;
@@ -74,7 +74,6 @@ $soft-white: #c5c6c7;
   color: rgba($soft-white, 0.75);
 }
 
-/* SEARCH */
 .search-section {
   margin-bottom: 1.25rem;
 }
@@ -102,7 +101,8 @@ input {
   padding: 0.55rem 0.9rem;
   font-size: 0.9rem;
   outline: none;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease,
+    background 0.15s ease;
 
   &::placeholder {
     color: rgba($soft-white, 0.45);
@@ -194,7 +194,11 @@ button {
 
 /* SUMMARY CARD */
 .summary-card {
-  background: linear-gradient(135deg, rgba(31, 40, 51, 0.98), rgba(11, 12, 16, 0.98));
+  background: linear-gradient(
+    135deg,
+    rgba(31, 40, 51, 0.98),
+    rgba(11, 12, 16, 0.98)
+  );
   border-radius: 1.1rem;
   padding: 1rem 0.9rem;
   border: 1px solid rgba($teal-green, 0.15);
@@ -266,7 +270,6 @@ button {
   }
 }
 
-/* RESULTS SECTIONS */
 .results-section {
   margin-top: 0.9rem;
 }
@@ -291,7 +294,6 @@ button {
   color: rgba($soft-white, 0.7);
 }
 
-/* Individual COA card */
 .coa-card {
   margin-top: 0.5rem;
   background: rgba(15, 20, 30, 0.95);
@@ -339,14 +341,13 @@ button {
   margin-top: 0.45rem;
   font-size: 0.8rem;
   text-decoration: none;
-  color: $teal-green;
+  color: $deep-black;
 
   &:hover {
     text-decoration: underline;
   }
 }
 
-/* Footer */
 .footer {
   margin-top: 1.4rem;
   font-size: 0.74rem;

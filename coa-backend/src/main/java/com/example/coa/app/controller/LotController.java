@@ -66,9 +66,11 @@ public class LotController {
     @GetMapping("/download")
     public ResponseEntity<byte[]> downloadPdf(@RequestParam String url) {
         byte[] file = downloadService.downloadByUrl(url);
+
         return ResponseEntity.ok()
-                .header("Content-Disposition", "attachment; filename=coa.pdf")
-                .contentType(org.springframework.http.MediaType.APPLICATION_PDF)
+                .header("Content-Disposition", "attachment; filename=\"coa.pdf\"")
+                .contentType(MediaType.APPLICATION_PDF)
+                .contentLength(file.length)
                 .body(file);
     }
 

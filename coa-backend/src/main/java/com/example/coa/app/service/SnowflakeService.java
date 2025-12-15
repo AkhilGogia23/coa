@@ -86,46 +86,34 @@ public class SnowflakeService {
     """;
 
         // --- FULL QUERY WITH RESTRICTED FIELDS (COMMENTED OUT UNTIL ACCESS IS GRANTED) ---
-    /*
-    String sql = """
-        SELECT
-            c.FILE_NAME AS PRODUCT_NAME,
-            c.BATCH_LOT_CODE AS LOT_NUMBER,
-            'FINISHED' AS PRODUCT_TYPE,
-            c.FILE_URL AS COA_PDF_URL,
-            TRUE AS PASSED,
 
-            -- ❌ RESTRICTED FIELDS: NO ACCESS YET
-            -- p.MATL_EXPIRYDATE AS MATERIAL_EXPIRY_DATE,
-            -- p.MANUFACTURE_DATE AS MANUFACTURE_DATE,
-            -- p.FG_SKU AS FINISHED_PRODUCT_SKU,
-            -- p.INGREDIENT_LIST AS INGREDIENTS,
-            -- p.BLEND_DESCRIPTION AS BLEND,
-            -- p.FINISHED_GOOD_CODE AS FINISHED_GOOD,
+//        String sql = """
+// SELECT
+//            c.FILE_NAME                       AS PRODUCT_NAME,
+//            c.BATCH_LOT_CODE                  AS LOT_NUMBER,
+//            'FINISHED'                        AS PRODUCT_TYPE,
+//            c.FILE_URL                        AS COA_PDF_URL,
+//            TRUE                              AS PASSED,
+//            c.LAST_MODIFIED,
+//
+//            -- mapped fields from PRODUCT_MATL_INVENTORY (alias p)
+//            p.FG_INVENTORYID                  AS SKU,
+//            p.MATL_DESCRIPTION                AS MANUFACTURER,
+//            p.MATL_EXPIRYDATE                 AS EXPIRY,
+//            p.MATL_INVENTORYID                AS INGREDIENTS,
+//            p.QTYREQUIRED                     AS BLEND,
+//            p.FG_DESCRIPTION                  AS FINISHED_DESCRIPTION,
+//            p.FG_DESCRIPTION                  AS PRODUCT_DESCRIPTION
+//
+//        FROM GOLD_DB.GOLD_MASTER_CONTROL.COA_LIBRARY c
+//        LEFT JOIN GOLD_DB.GOLD_ACUMATICA.PRODUCT_MATL_INVENTORY p
+//            ON c.BATCH_LOT_CODE = p.FG_INVENTORYID
+//            OR c.BATCH_LOT_CODE = p.MATL_INVENTORYID
+//        WHERE c.BATCH_LOT_CODE = ?
+//        ORDER BY c.LAST_MODIFIED DESC
+//""";
 
-            -- ✔ ALLOWED FIELDS
-            p.FG_INVENTORYID,
-            p.FG_DESCRIPTION,
-            p.FG_QTY_ON_HAND,
-            p.FG_TOTAL_VALUE,
-            p.MATL_INVENTORYID,
-            p.MATL_DESCRIPTION,
-            p.MATL_QTY_ON_HAND,
-            p.MATL_QTY_AVAILABLE,
-            p.QTYREQUIRED,
-            p.BUILDQTY_BY_MATERIAL,
-            p.BUILDQTY_FG,
-            c.PRODUCTION_RECORD_ID,
-            c.LAST_MODIFIED
 
-        FROM GOLD_DB.GOLD_MASTER_CONTROL.COA_LIBRARY c
-        LEFT JOIN GOLD_DB.GOLD_ACUMATICA.PRODUCT_MATL_INVENTORY p
-            ON c.BATCH_LOT_CODE = p.FG_INVENTORYID
-            OR c.BATCH_LOT_CODE = p.MATL_INVENTORYID
-        WHERE c.BATCH_LOT_CODE = ?
-        ORDER BY c.LAST_MODIFIED DESC
-    """;
-    */
 
         return jdbcTemplate.queryForList(sql, lotNumber);
     }

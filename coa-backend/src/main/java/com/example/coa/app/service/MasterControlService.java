@@ -20,8 +20,8 @@ public class MasterControlService {
 
     public MasterControlService(
             RestTemplate restTemplate,
-            @Value("${mastercontrol.base-url}") String baseUrl,
-            @Value("${mastercontrol.api-key}") String apiKey   // 👈 use ONE consistent property name
+            @Value("${master-control.base-url}") String baseUrl,
+            @Value("${master-control.api-key}") String apiKey   // 👈 use ONE consistent property name
     ) {
         this.restTemplate = restTemplate;
         this.baseUrl = baseUrl;

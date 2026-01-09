@@ -43,35 +43,44 @@ export class AppComponent {
       },
     });
   }
-  downloadCoa(item: any) {
-    console.log('PDF URL:', item?.coaPdfUrl);
-    if (!item?.coaPdfUrl) {
-      console.error('Missing PDF URL for item:', item);
-      return;
-    }
+  // downloadCoa(item: any) {
+  //   console.log('PDF URL:', item?.coaPdfUrl);
+  //   if (!item?.coaPdfUrl) {
+  //     console.error('Missing PDF URL for item:', item);
+  //     return;
+  //   }
 
-    const params = { url: item.coaPdfUrl };
+  //   const params = { url: item.coaPdfUrl };
 
-    this.http
-      .get(`${this.apiBase}/download`, {
-        params,
-        responseType: 'blob',
-      })
-      .subscribe({
-        next: (blob) => {
-          const blobUrl = window.URL.createObjectURL(blob);
-          const a = document.createElement('a');
-          a.href = blobUrl;
-          a.download = (item.name || 'COA') + '.pdf';
-          a.click();
-          URL.revokeObjectURL(blobUrl);
-        },
-        error: (err) => {
-          console.error('Error downloading COA PDF:', err);
-          alert(
-            'Could not download PDF – invalid URL or expired presigned link.'
-          );
-        },
-      });
-  }
+  //   this.http
+  //     .get(`${this.apiBase}/download`, {
+  //       params,
+  //       responseType: 'blob',
+  //     })
+  //     .subscribe({
+  //       next: (blob) => {
+  //         const blobUrl = window.URL.createObjectURL(blob);
+  //         const a = document.createElement('a');
+  //         a.href = blobUrl;
+  //         a.download = (item.name || 'COA') + '.pdf';
+  //         a.click();
+  //         URL.revokeObjectURL(blobUrl);
+  //       },
+  //       error: (err) => {
+  //         console.error('Error downloading COA PDF:', err);
+  //         alert(
+  //           'Could not download PDF – invalid URL or expired presigned link.'
+  //         );
+  //       },
+  //     });
+  // }
+downloadCoa(item: any) {
+  window.open(
+    `${this.apiBase}/${item.lotNumber}/download`,
+    '_blank'
+  );
+}
+
+
+
 }

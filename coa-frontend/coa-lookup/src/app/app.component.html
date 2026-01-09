@@ -89,14 +89,7 @@
               {{ item.passed ? "Pass" : "Fail" }}
             </span>
           </div>
-          <a
-            class="pdf-link"
-            [href]="item.coaPdfUrl"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View COA PDF
-          </a>
+    
         </div>
       </section>
 
@@ -118,9 +111,7 @@
               {{ item.passed ? "Pass" : "Fail" }}
             </span>
           </div>
-          <button type="button" class="pdf-link" (click)="downloadCoa(item)">
-            Download COA PDF
-          </button>
+       
         </div>
       </section>
 

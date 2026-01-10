@@ -1,5 +1,5 @@
 
-package com.example.coa.app.service;
+package com.example.coa.app.mapper;
 
 import com.example.coa.app.dto.TestResult;
 import org.springframework.stereotype.Component;

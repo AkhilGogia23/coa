@@ -15,4 +15,5 @@ public class LotResponse {
     private String manufactureDate;
     private String expiryDate;
     private LotResults results;
+
 }

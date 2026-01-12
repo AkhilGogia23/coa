@@ -76,7 +76,7 @@ export class AppComponent {
   // }
 downloadCoa(item: any) {
   window.open(
-    `${this.apiBase}/${item.lotNumber}/download`,
+    `${this.apiBase}/download/${item.lotNumber}`,
     '_blank'
   );
 }

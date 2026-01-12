@@ -26,7 +26,7 @@ export interface LotResponse {
 @Injectable({ providedIn: 'root' })
 export class LotLookupService {
   private http = inject(HttpClient);
-  private baseUrl = 'http://localhost:8080/api/lots';
+  private baseUrl = 'https://coa-production.up.railway.app/api/lots';
 
   getLot(lotNumber: string): Observable<LotResponse> {
     return this.http.get<LotResponse>(

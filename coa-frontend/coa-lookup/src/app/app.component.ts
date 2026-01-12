@@ -11,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent {
   title = 'COA Lookup';
-  private apiBase = 'http://localhost:8080/api/lots';
+  private apiBase = 'https://coa-production.up.railway.app/api/lots';
   // 🔹 inject the service
   private lotService = inject(LotLookupService);
 
